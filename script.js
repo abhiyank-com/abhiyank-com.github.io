@@ -1,180 +1,113 @@
+// Interactive background with particles and connections
 document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const pages = document.querySelectorAll('.page-content');
-    const homeName = document.querySelector('#home-page .hero-name');
-    const homeTagline = document.querySelector('#home-page .hero-tagline');
-    const homeButton = document.querySelector('#home-page .btn');
-    const codeEditor = document.querySelector('#home-page .code-editor-container');
-
-    // --- Animated Code Typing Effect ---
-    const animatedCodeElement = document.getElementById('animated-code');
-    const codeSnippets = [
-        {
-            text: `// Initialize futuristic UI...\n<span class="code-keyword">const</span> <span class="code-variable">ui</span> = <span class="code-keyword">new</span> <span class="code-function-name">FuturisticInterface</span>();\n<span class="code-variable">ui</span>.<span class="code-function-name">renderParticles</span>(<span class="code-number">1000</span>);\n<span class="code-variable">ui</span>.<span class="code-function-name">activateNeuralNetwork</span>();`,
-            delay: 100
-        },
-        {
-            text: `// Launching quantum encryption...\n<span class="code-keyword">function</span> <span class="code-function-name">secureConnection</span>(<span class="code-variable">data</span>) {\n  <span class="code-keyword">const</span> <span class="code-variable">encrypted</span> = <span class="code-function-name">QuantumEncrypt</span>(<span class="code-variable">data</span>);\n  <span class="code-keyword">return</span> <span class="code-variable">encrypted</span>;\n}`,
-            delay: 90
-        },
-        {
-            text: `// Booting up AI core...\n<span class="code-keyword">async</span> <span class="code-keyword">function</span> <span class="code-function-name">startAICore</span>() {\n  <span class="code-keyword">await</span> <span class="code-variable">loadModels</span>();\n  <span class="code-comment">// AI is now sentient</span>\n  <span class="code-function-name">console</span>.<span class="code-function-name">log</span>(<span class="code-string">"AI Core Online."</span>);\n}`,
-            delay: 95
-        }
-    ];
-    let currentSnippetIndex = 0;
-    let currentCharIndex = 0;
-    let isDeleting = false;
-
-    function typeCode() {
-        if (!animatedCodeElement) return;
-        const currentSnippet = codeSnippets[currentSnippetIndex];
-        
-        if (isDeleting) {
-            // Deleting: Remove characters one by one (faster)
-            // For simplicity in this demo, we'll clear and move to next to avoid complex HTML parsing for deletion
-            animatedCodeElement.innerHTML = ''; 
-            currentCharIndex = 0;
-            isDeleting = false;
-            currentSnippetIndex = (currentSnippetIndex + 1) % codeSnippets.length;
-            setTimeout(typeCode, 500); // Pause before typing next
-        } else {
-            // Typing
-            if (currentCharIndex < currentSnippet.text.length) {
-                // To correctly render HTML tags as part of the string, we need to append carefully
-                // This simplified version appends the whole snippet up to currentCharIndex
-                // A more robust solution would parse and append token by token
-                animatedCodeElement.innerHTML = currentSnippet.text.substring(0, currentCharIndex + 1);
-                currentCharIndex++;
-                setTimeout(typeCode, Math.random() * currentSnippet.delay + 50); // Randomize typing speed slightly
-            } else {
-                // Finished typing this snippet
-                isDeleting = true;
-                setTimeout(typeCode, 3000); // Wait before deleting
-            }
-        }
-    }
-
-
-    // --- Interactive Background Canvas (Particles) ---
+    // Canvas setup for interactive background
     const canvas = document.getElementById('interactive-bg');
-    const ctx = canvas.getContext('2d');
-    let particlesArray;
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    class Particle {
-        constructor(x, y, directionX, directionY, size, color, speed) {
-            this.x = x;
-            this.y = y;
-            this.directionX = directionX * speed;
-            this.directionY = directionY * speed;
-            this.size = size;
-            this.color = color;
-            this.baseSpeed = speed;
-        }
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-        }
-        update() {
-            if (this.x > canvas.width + this.size * 2 || this.x < -this.size * 2) {
-                this.directionX = -this.directionX;
-            }
-            if (this.y > canvas.height + this.size * 2 || this.y < -this.size * 2) {
-                this.directionY = -this.directionY;
-            }
-            this.x += this.directionX;
-            this.y += this.directionY;
-            this.draw();
-        }
-    }
-
-    function initParticles() {
-        particlesArray = [];
-        const numberOfParticles = (canvas.height * canvas.width) / 10000; 
-        for (let i = 0; i < numberOfParticles; i++) {
-            const size = Math.random() * 2 + 0.5; 
-            const x = Math.random() * canvas.width;
-            const y = Math.random() * canvas.height;
-            const directionX = (Math.random() * 0.4) - 0.2; 
-            const directionY = (Math.random() * 0.4) - 0.2;
-            const speed = Math.random() * 0.5 + 0.2; // Individual speed for particles
-            const color = `rgba(0, 198, 255, ${Math.random() * 0.4 + 0.2})`; 
-            particlesArray.push(new Particle(x, y, directionX, directionY, size, color, speed));
-        }
-    }
-
-    function connectParticles() {
-        let opacityValue = 1;
-        for (let a = 0; a < particlesArray.length; a++) {
-            for (let b = a + 1; b < particlesArray.length; b++) { // Start b from a + 1
-                const distance = Math.sqrt(
-                    Math.pow(particlesArray[a].x - particlesArray[b].x, 2) +
-                    Math.pow(particlesArray[a].y - particlesArray[b].y, 2)
-                );
-                const connectionDistance = Math.min(canvas.width / 8, 120); // Max connection distance
-
-                if (distance < connectionDistance) { 
-                    opacityValue = 1 - (distance / connectionDistance);
-                    ctx.strokeStyle = `rgba(0, 123, 255, ${opacityValue * 0.5})`; 
-                    ctx.lineWidth = 0.8;
-                    ctx.beginPath();
-                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                    ctx.stroke();
-                }
-            }
-        }
-    }
-
-    function animateParticles() {
-        requestAnimationFrame(animateParticles);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < particlesArray.length; i++) {
-            particlesArray[i].update();
-        }
-        connectParticles();
-    }
-    
-    initParticles();
-    animateParticles();
-
-    window.addEventListener('resize', () => {
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        initParticles();
-    });
 
+        // Particles configuration
+        const particlesArray = [];
+        const numberOfParticles = window.innerWidth < 768 ? 50 : 100;
+        const connectionDistance = window.innerWidth < 768 ? 120 : 180;
+        
+        // Create initial particles
+        for (let i = 0; i < numberOfParticles; i++) {
+            particlesArray.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 1.5 + 1,
+                speedX: (Math.random() - 0.5) * 0.5,
+                speedY: (Math.random() - 0.5) * 0.5,
+            });
+        }
 
-    // --- Page Navigation ---
-    function showPage(pageId, isInitialLoad = false) {
-        pages.forEach(page => {
-            if (page.id === pageId) {
-                setTimeout(() => {
-                    page.classList.add('active');
-                    handleScrollAnimations(page); // Trigger scroll animations for new page
-                    if (pageId === 'home-page' && isInitialLoad) { // Trigger homepage animations only on initial load of home
-                        triggerHomePageIntroAnimations();
+        // Animation loop for particles
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(0, 123, 255, 0.5)';
+            ctx.strokeStyle = 'rgba(0, 198, 255, 0.1)';
+            
+            // Update and draw particles
+            for (let i = 0; i < particlesArray.length; i++) {
+                const p = particlesArray[i];
+                
+                // Move particles
+                p.x += p.speedX;
+                p.y += p.speedY;
+                
+                // Bounce off edges
+                if (p.x > canvas.width || p.x < 0) p.speedX *= -1;
+                if (p.y > canvas.height || p.y < 0) p.speedY *= -1;
+                
+                // Draw particle
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Connect particles within range
+                for (let j = i; j < particlesArray.length; j++) {
+                    const p2 = particlesArray[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
                     }
-                }, isInitialLoad ? 50 : (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--transition-speed')) * 1000 * 0.5) ); // Adjust delay
-            } else {
-                page.classList.remove('active');
+                }
             }
+            
+            requestAnimationFrame(animateParticles);
+        }
+        
+        animateParticles();
+        
+        // Resize canvas when window size changes
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         });
+    }
 
+    // Navigation System
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Hamburger menu toggle for mobile
+    if (hamburgerMenu) {
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+    }
+
+    // Function to show specific page content
+    function showPage(pageId, isInitialLoad = false) {
+        const allPages = document.querySelectorAll('.page-content');
+        allPages.forEach(page => page.classList.remove('active'));
+        
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            targetPage.classList.add('active');
+        }
+        
+        // Update navigation active states
         navLinks.forEach(link => {
             link.classList.toggle('nav-active', link.dataset.page === pageId);
         });
         
         if (!isInitialLoad) { // Avoid changing hash if it's the initial load based on hash
-             window.location.hash = pageId.replace('-page', '');
+            window.location.hash = pageId.replace('-page', '');
         }
     }
 
+    // Set up navigation link event listeners
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -187,7 +120,14 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (!currentPage) { 
                 showPage(pageId);
             }
-             // Smooth scroll to top of new page content
+            
+            // Close mobile menu if open
+            if (hamburgerMenu && hamburgerMenu.classList.contains('active')) {
+                hamburgerMenu.classList.remove('active');
+                nav.classList.remove('active');
+            }
+            
+            // Smooth scroll to top of new page content
             const targetPageElement = document.getElementById(pageId);
             if (targetPageElement) {
                 // Wait for page to become potentially visible before scrolling
@@ -200,119 +140,151 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // --- Homepage Intro Animations ---
+    // Homepage Intro Animations
     function triggerHomePageIntroAnimations() {
-        if(homeName) {
+        const homeName = document.querySelector('.home-name');
+        const homeTagline = document.querySelector('.home-tagline');
+        const codeEditor = document.querySelector('.code-editor');
+        
+        if (homeName) {
             homeName.style.opacity = '0'; // Reset for animation
             homeName.style.transform = 'translateY(40px)';
             setTimeout(() => { homeName.style.opacity = '1'; homeName.style.transform = 'translateY(0)'; }, 200);
         }
-        if(homeTagline) {
+        
+        if (homeTagline) {
             homeTagline.style.opacity = '0';
             homeTagline.style.transform = 'translateY(40px)';
             setTimeout(() => { homeTagline.style.opacity = '1'; homeTagline.style.transform = 'translateY(0)'; }, 500);
         }
-         if(codeEditor) {
+        
+        if (codeEditor) {
             codeEditor.style.opacity = '0';
             codeEditor.style.transform = 'translateY(40px) scale(0.95)';
-            setTimeout(() => { codeEditor.style.opacity = '1'; codeEditor.style.transform = 'translateY(0) scale(1)'; typeCode(); }, 800); // Start typing after editor appears
-        }
-        if(homeButton) {
-            homeButton.style.opacity = '0';
-            homeButton.style.transform = 'translateY(40px)';
-            setTimeout(() => { homeButton.style.opacity = '1'; homeButton.style.transform = 'translateY(0)'; }, 1100);
+            setTimeout(() => { 
+                codeEditor.style.opacity = '1'; 
+                codeEditor.style.transform = 'translateY(0) scale(1)'; 
+                typeCode(); 
+            }, 800); // Start typing after editor appears
         }
     }
-
-    // --- Initial Page Load from Hash or Default to Home ---
-    function loadInitialPage() {
-        const hash = window.location.hash.substring(1); 
-        let initialPageId = 'home-page';
-        if (hash) {
-            const potentialPageId = hash + '-page';
-            if (document.getElementById(potentialPageId)) {
-                initialPageId = potentialPageId;
-            }
-        }
-        showPage(initialPageId, true); // Pass true for isInitialLoad
-    }
-    loadInitialPage(); 
-
-    // --- Scroll-based Animations ---
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+    
+    // Create code-typing animation
+    let codeText = '';
+    let codeIndex = 0;
+    let codeSpeed = 40; // Typing speed in ms
+    
+    function typeCode() {
+        const codeDisplay = document.querySelector('.code-content');
+        if (!codeDisplay) return;
+        
+        codeText = codeDisplay.innerHTML;
+        codeDisplay.innerHTML = '';
+        codeDisplay.style.display = 'block';
+        
+        function type() {
+            if (codeIndex < codeText.length) {
+                codeDisplay.innerHTML += codeText.charAt(codeIndex);
+                codeIndex++;
+                setTimeout(type, codeSpeed);
             } else {
-                // Optional: To re-animate every time it scrolls out and back in
-                // entry.target.classList.remove('visible'); 
+                codeDisplay.innerHTML = codeText; // Ensure complete code is shown
             }
-        });
-    }, { threshold: 0.1 }); 
+        }
+        
+        type();
+    }
 
-    function handleScrollAnimations(container) {
-        const elementsToObserve = container.querySelectorAll('.reveal-on-scroll');
-        elementsToObserve.forEach(el => {
-            el.classList.remove('visible'); // Reset for re-animation if page changes
-            revealObserver.observe(el);
+    // Scroll animation for revealing elements
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    
+    function checkIfInView() {
+        revealElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150; // How many pixels from viewport bottom before revealing
+            
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('revealed');
+            }
         });
     }
     
-    // --- Project Card Tilt Effect ---
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            const rotateX = (y / (rect.height / 2)) * -7; // Max tilt 7 degrees
-            const rotateY = (x / (rect.width / 2)) * 7;
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
-        });
-    });
+    window.addEventListener('scroll', checkIfInView);
+    checkIfInView(); // Check on initial load
 
-    // --- Contact Form Handling (Now mainly for FormSubmit) ---
+    // Form submission handling for contact form
     const contactForm = document.getElementById('contact-form');
-    const formMessageDiv = document.getElementById('form-submission-message');
-
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            // FormSubmit will handle the submission.
-            // You can add client-side validation here if needed before FormSubmit takes over.
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            if (!name || !email || !message) {
-                e.preventDefault(); // Prevent FormSubmit if fields are empty
-                formMessageDiv.innerHTML = '<p><strong>Error:</strong> Please fill in all fields before transmitting.</p>';
-                formMessageDiv.className = 'error';
-                setTimeout(() => { formMessageDiv.innerHTML = ''; formMessageDiv.className = ''; }, 4000);
-                return;
-            }
-            // If using JS to show a message after FormSubmit (requires redirecting back with params or AJAX)
-            // For now, FormSubmit's default behavior will take over.
-            // You can set a `_next` hidden input to redirect to a custom "thank you" page.
-            console.log("Form submitted to FormSubmit.co");
-            // Optionally, clear form or show a temporary local message
-            // setTimeout(() => { contactForm.reset(); }, 1000); 
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show toast notification
+            showToast('Message sent successfully!', 'success');
+            
+            // Reset the form
+            contactForm.reset();
         });
     }
     
-    // --- Login Form (Visual Only) ---
-    const loginForm = document.getElementById('login-form');
-    if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert("Login attempt (visual demo). Username: " + document.getElementById('username').value);
-            loginForm.reset();
-        });
+    // Toast notification function
+    function showToast(message, type = 'info') {
+        // Create toast if it doesn't exist
+        let toast = document.querySelector('.toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            
+            const icon = document.createElement('span');
+            icon.className = 'toast-icon';
+            icon.innerHTML = type === 'success' ? '✅' : 'ℹ️';
+            
+            const content = document.createElement('div');
+            content.className = 'toast-content';
+            
+            toast.appendChild(icon);
+            toast.appendChild(content);
+            document.body.appendChild(toast);
+        }
+        
+        // Set toast content
+        const toastContent = toast.querySelector('.toast-content');
+        if (toastContent) {
+            toastContent.textContent = message;
+        }
+        
+        // Show the toast
+        toast.classList.add('show');
+        
+        // Hide the toast after 3 seconds
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
     }
 
-
-    // --- Dynamic Year in Footer ---
-    document.getElementById('current-year').textContent = new Date().getFullYear();
+    // Handle URL hash for direct navigation
+    function handleHash() {
+        const hash = window.location.hash.replace('#', '');
+        if (hash) {
+            const pageId = hash + '-page';
+            const pageElement = document.getElementById(pageId);
+            if (pageElement) {
+                showPage(pageId, true);
+                triggerHomePageIntroAnimations();
+            } else {
+                // Default to home if hash doesn't match a valid page
+                showPage('home-page', true);
+                triggerHomePageIntroAnimations();
+            }
+        } else {
+            // Default to home if no hash
+            showPage('home-page', true);
+            triggerHomePageIntroAnimations();
+        }
+    }
+    
+    // Initial page load based on URL hash
+    handleHash();
+    
+    // Handle hash changes while on the page
+    window.addEventListener('hashchange', handleHash);
 });
