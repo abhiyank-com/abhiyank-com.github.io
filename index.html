@@ -3,43 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Open Graph Meta Tags for Link Preview -->
-    <meta property="og:title" content="Abhiyank" />
-    <meta property="og:description" content="Visit to Contact" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Abhiyank Mishra - Developer Portfolio" />
+    <meta name="description" content="Official portfolio of Abhiyank Mishra – AI Developer, Engineering Student, and Creator of Advanced Applications.">
+    <meta name="keywords" content="Abhiyank, Abhiyank Mishra, Developer, AI, Engineering Student, Portfolio">
+    <meta property="og:description" content="Explore innovative projects and connect" />
     <meta property="og:image" content="https://abhiyank.in/preview.png" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
     <meta property="og:url" content="https://abhiyank.in" />
     <meta property="og:type" content="website" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Abhiyank" />
-    <meta name="twitter:description" content="Visit to Contact" />
-    <meta name="twitter:image" content="https://abhiyank.in/preview.png" />
     <title>Abhiyank Mishra - Developer Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables */
+        /* CSS Variables - Red Theme */
         :root {
-            --bg-dark: #080B16; /* Very dark, slightly bluish black */
-            --bg-medium: #121828; /* Dark blue-grey */
-            --bg-light: #1A2033; /* Lighter blue-grey for elements */
-            --primary-blue: #007BFF; /* Bright, classic blue */
-            --accent-blue: #00C6FF; /* Lighter, vibrant cyan-blue */
-            --text-light: #E0E7FF; /* Light, slightly blue-tinted white */
-            --text-medium: #A0A8C0; /* Muted blue-grey */
-            --text-dark: #1E293B; /* For light backgrounds if any */
+            --bg-dark: #0a0a0a;
+            --bg-medium: #1a1a1a;
+            --bg-light: #252525;
+            --primary-red: #e63946;
+            --accent-red: #ff5964;
+            --dark-red: #d62828;
+            --text-light: #f1f1f1;
+            --text-medium: #b8b8b8;
+            --text-dark: #1E293B;
             --font-primary: 'Poppins', sans-serif;
             --font-secondary: 'Montserrat', sans-serif;
-            --transition-speed: 0.4s;
-            --shadow-color: rgba(0, 123, 255, 0.3);
-            --glow-color: rgba(0, 198, 255, 0.5);
-            --code-editor-bg: #0D1117; /* GitHub dark mode like */
+            --transition-speed: 0.3s;
+            --shadow-color: rgba(230, 57, 70, 0.3);
+            --glow-color: rgba(255, 89, 100, 0.4);
+            --code-editor-bg: #0D0D0D;
         }
 
-        /* Global Resets & Base Styles */
+        /* Global Resets */
         * {
             margin: 0;
             padding: 0;
@@ -55,8 +49,8 @@
             background-color: var(--bg-dark);
             color: var(--text-light);
             line-height: 1.7;
-            overflow-x: hidden; /* Prevent horizontal scrollbars */
-            position: relative; /* For canvas positioning */
+            overflow-x: hidden;
+            position: relative;
         }
 
         /* Animated Background Canvas */
@@ -66,40 +60,37 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Behind all content */
-            opacity: 0.6; /* Slightly reduced for better text contrast */
+            z-index: -1;
+            opacity: 0.5;
         }
 
-        /* Main Container & Page Structure */
+        /* Main Container */
         .page-container {
             width: 100%;
-            min-height: 100vh; 
-            position: relative; 
-            display: flex; /* For footer positioning */
-            flex-direction: column; /* For footer positioning */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .page-content {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 120px 20px 60px; /* Increased top padding for header, bottom for content */
-            opacity: 0; 
-            transform: translateY(30px) scale(0.98); /* Slightly more pronounced entry */
-            transition: opacity calc(var(--transition-speed) * 1.5) ease-out, transform calc(var(--transition-speed) * 1.5) ease-out, visibility 0s calc(var(--transition-speed) * 1.5);
-            position: absolute; 
-            width: calc(100% - 40px); 
-            left: 20px; 
-            visibility: hidden; 
-            flex-grow: 1; /* Allow content to take available space */
+            padding: 140px 30px 80px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            position: absolute;
+            width: 100%;
+            visibility: hidden;
+            flex-grow: 1;
         }
 
         .page-content.active {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
             visibility: visible;
-            position: relative; 
-            z-index: 10; 
-            transition: opacity var(--transition-speed) ease-out, transform var(--transition-speed) ease-out, visibility 0s 0s;
+            position: relative;
+            z-index: 10;
         }
         
         /* Header & Navigation */
@@ -108,24 +99,24 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(8, 11, 22, 0.75); /* Darker, more transparent */
-            backdrop-filter: blur(12px);
-            padding: 18px 0; /* Slightly more padding */
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
             z-index: 1000;
-            box-shadow: 0 3px 20px rgba(0, 0, 0, 0.4);
-            border-bottom: 1px solid rgba(0, 123, 255, 0.15);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(230, 57, 70, 0.2);
         }
 
         .header-container {
-            max-width: 1200px; /* Slightly wider */
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        /* AM Logo */
+        /* Logo */
         .logo {
             display: flex;
             align-items: center;
@@ -134,98 +125,114 @@
         }
 
         .logo-svg-container {
-            width: 50px; /* Slightly larger */
-            height: 50px;
+            width: 45px;
+            height: 45px;
             margin-right: 12px;
-            transition: transform var(--transition-speed) ease, filter var(--transition-speed) ease;
-        }
-        .logo:hover .logo-svg-container {
-            transform: rotate(20deg) scale(1.15);
-            filter: drop-shadow(0 0 8px var(--glow-color));
+            transition: transform var(--transition-speed) ease;
         }
 
-        .logo-svg {
-            width: 100%;
-            height: 100%;
+        .logo:hover .logo-svg-container {
+            transform: rotate(360deg) scale(1.1);
         }
-        .logo-svg .circle-bg { fill: var(--primary-blue); transition: fill var(--transition-speed) ease; }
-        .logo:hover .logo-svg .circle-bg { fill: var(--accent-blue); }
-        .logo-svg .text-am { 
-            fill: var(--bg-dark); 
-            font-family: var(--font-secondary); 
-            font-weight: 800; 
-            font-size: 22px; 
-            text-anchor: middle;
-            dominant-baseline: central;
+
+        .logo-svg .circle-bg {
+            fill: var(--primary-red);
+            transition: fill var(--transition-speed) ease;
+        }
+
+        .logo:hover .logo-svg .circle-bg {
+            fill: var(--accent-red);
+        }
+
+        .logo-svg .text-am {
+            fill: var(--text-light);
+            font-family: var(--font-secondary);
+            font-weight: 800;
+            font-size: 22px;
         }
 
         .logo-name {
             font-family: var(--font-secondary);
-            font-size: 1.7rem;
+            font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: 0.5px;
         }
-        .logo-name .first-name { color: var(--text-light); }
-        .logo-name .last-name { color: var(--primary-blue); transition: color var(--transition-speed) ease; }
-        .logo:hover .logo-name .last-name { color: var(--accent-blue); }
 
+        .logo-name .first-name {
+            color: var(--text-light);
+        }
+
+        .logo-name .last-name {
+            color: var(--primary-red);
+            transition: color var(--transition-speed) ease;
+        }
+
+        .logo:hover .logo-name .last-name {
+            color: var(--accent-red);
+        }
 
         nav ul {
             list-style: none;
             display: flex;
-        }
-
-        nav ul li {
-            margin-left: 35px; /* Increased spacing */
+            gap: 30px;
         }
 
         nav ul li a {
             color: var(--text-medium);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.05rem; /* Slightly larger */
-            padding: 10px 0;
+            font-size: 1rem;
+            padding: 8px 0;
             position: relative;
-            transition: color var(--transition-speed) ease, text-shadow var(--transition-speed) ease;
+            transition: color var(--transition-speed) ease;
         }
 
         nav ul li a::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 3px;
-            bottom: -3px;
+            height: 2px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
-            transition: width var(--transition-speed) ease-in-out;
-            border-radius: 3px;
-            box-shadow: 0 0 8px var(--glow-color);
-            opacity: 0;
+            background: var(--accent-red);
+            transition: width var(--transition-speed) ease;
         }
 
         nav ul li a:hover,
         nav ul li a.nav-active {
             color: var(--text-light);
-            text-shadow: 0 0 5px var(--accent-blue);
         }
 
         nav ul li a:hover::after,
         nav ul li a.nav-active::after {
             width: 100%;
-            opacity: 1;
         }
 
-        /* Headings and Text */
+        /* Headings */
         h1, h2, h3 {
             font-family: var(--font-secondary);
             color: var(--text-light);
             margin-bottom: 1.2rem;
             line-height: 1.3;
         }
-        h1 { font-size: 3.8rem; letter-spacing: 1px; }
-        h2 { font-size: 2.8rem; color: var(--primary-blue); margin-bottom: 2.5rem; }
-        h3 { font-size: 2rem; color: var(--accent-blue); margin-bottom: 1.8rem; }
+
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 2.5rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--accent-red);
+            margin-bottom: 1.5rem;
+        }
 
         p {
             margin-bottom: 1.5rem;
@@ -236,77 +243,67 @@
         /* Buttons */
         .btn {
             display: inline-block;
-            background: linear-gradient(100deg, var(--primary-blue), var(--accent-blue));
-            color: var(--bg-dark); 
+            background: linear-gradient(135deg, var(--primary-red), var(--accent-red));
+            color: var(--text-light);
             padding: 14px 32px;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 700; /* Bolder */
-            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-size var(--transition-speed) ease;
-            box-shadow: 0 5px 18px var(--shadow-color);
+            font-weight: 700;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 5px 20px var(--shadow-color);
             border: none;
             cursor: pointer;
-            font-size: 1.05rem;
-            background-size: 200% 100%; /* For hover animation */
+            font-size: 1rem;
         }
 
         .btn:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 8px 25px var(--glow-color);
-            background-position: right center; /* Change gradient direction */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px var(--glow-color);
         }
 
-        /* Home Page Specifics */
+        /* Home Page */
         #home-page .hero-section {
-            min-height: calc(100vh - 160px); /* Adjusted for padding */
+            min-height: calc(100vh - 160px);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            position: relative;
         }
 
         #home-page .hero-name {
-            font-size: 5rem; 
+            font-size: 4.5rem;
             font-weight: 800;
-            background: linear-gradient(90deg, var(--text-light), var(--accent-blue), var(--primary-blue));
+            background: linear-gradient(90deg, var(--text-light), var(--accent-red), var(--primary-red));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
-            animation: textShine 5s linear infinite;
-            margin-bottom: 0.8rem;
-            opacity: 0; 
-            transform: translateY(40px); 
+            animation: textShine 4s linear infinite;
+            margin-bottom: 1rem;
         }
 
         @keyframes textShine {
-            to { background-position: -200% center; }
+            to { background-position: 200% center; }
         }
 
         #home-page .hero-tagline {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: var(--text-medium);
             margin-bottom: 2.5rem;
-            opacity: 0; 
-            transform: translateY(40px); 
         }
         
-        /* Animated Code Editor */
+        /* Code Editor */
         .code-editor-container {
             width: 100%;
-            max-width: 700px; /* Max width of the editor */
+            max-width: 700px;
             margin-top: 2rem;
             background-color: var(--code-editor-bg);
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px var(--glow-color) inset;
-            border: 1px solid rgba(0, 123, 255, 0.3);
-            opacity: 0;
-            transform: translateY(40px) scale(0.95);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+            border: 1px solid rgba(230, 57, 70, 0.3);
         }
+
         .code-editor-header {
             display: flex;
             align-items: center;
@@ -314,140 +311,156 @@
             margin-bottom: 15px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
+
         .code-editor-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
             margin-right: 8px;
         }
+
         .code-editor-dot.red { background-color: #FF5F57; }
         .code-editor-dot.yellow { background-color: #FEBC2E; }
         .code-editor-dot.green { background-color: #28C840; }
 
         #animated-code {
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Courier New', monospace;
             font-size: 0.95rem;
-            color: #C9D1D9; /* GitHub code color */
+            color: #C9D1D9;
             line-height: 1.6;
-            min-height: 100px; /* Ensure space for typing */
-            white-space: pre-wrap; /* Allows wrapping and preserves spaces/newlines */
+            min-height: 120px;
+            white-space: pre-wrap;
         }
-        #animated-code .code-keyword { color: #FF7B72; } /* e.g., const, function */
-        #animated-code .code-variable { color: #FFA657; } /* e.g., variables */
-        #animated-code .code-string { color: #A5D6FF; } /* e.g., "strings" */
-        #animated-code .code-comment { color: #8B949E; font-style: italic; } /* e.g., // comments */
-        #animated-code .code-function-name { color: #D2A8FF; } /* function names */
-        #animated-code .code-number { color: #79C0FF; } /* numbers */
 
+        .code-keyword { color: #FF7B72; }
+        .code-variable { color: #FFA657; }
+        .code-string { color: #A5D6FF; }
+        .code-comment { color: #8B949E; font-style: italic; }
+        .code-function-name { color: #D2A8FF; }
+        .code-number { color: #79C0FF; }
 
         .typing-cursor {
             display: inline-block;
             width: 8px;
-            height: 1.2em; /* Relative to font size */
-            background-color: var(--accent-blue);
+            height: 1.2em;
+            background-color: var(--accent-red);
             animation: blink 1s steps(1) infinite;
             margin-left: 2px;
-            vertical-align: text-bottom;
         }
 
         @keyframes blink {
             50% { opacity: 0; }
         }
 
-        /* Section Title Styling */
+        /* Section Title */
         .section-title {
             text-align: center;
-            margin-bottom: 50px; /* Increased margin */
+            margin-bottom: 60px;
         }
+
         .section-title h2 {
             display: inline-block;
             position: relative;
             padding-bottom: 15px;
         }
+
         .section-title h2::after {
             content: '';
             position: absolute;
             width: 80px;
-            height: 5px;
+            height: 4px;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
-            border-radius: 3px;
-            box-shadow: 0 0 10px var(--glow-color);
+            background: linear-gradient(90deg, var(--primary-red), var(--accent-red));
+            border-radius: 2px;
         }
 
         /* About Page */
         .about-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr; /* Text takes more space */
-            gap: 50px;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
             align-items: center;
         }
-        .about-image-placeholder {
+
+        .about-image-container {
             width: 100%;
-            max-width: 320px;
-            height: 320px;
-            background-color: var(--bg-medium);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            max-width: 350px;
+            height: 350px;
             margin: 0 auto;
-            border: 6px solid var(--primary-blue);
-            box-shadow: 0 0 30px var(--shadow-color), 0 0 15px var(--accent-blue) inset;
             position: relative;
+            border-radius: 20px;
             overflow: hidden;
+            box-shadow: 0 10px 40px var(--shadow-color);
+            border: 3px solid var(--primary-red);
         }
-         .about-image-placeholder::before { /* Inner glow effect */
+
+        .about-image-container::before {
             content: '';
             position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            padding: 5px; /* control the border thickness */
-            background: conic-gradient(from 0deg at 50% 50%, var(--accent-blue), var(--primary-blue), var(--accent-blue));
+            inset: -3px;
+            border-radius: 20px;
+            padding: 3px;
+            background: linear-gradient(45deg, var(--accent-red), var(--primary-red), var(--dark-red));
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
-            animation: spin 4s linear infinite;
+            animation: borderRotate 3s linear infinite;
         }
-        @keyframes spin {
+
+        @keyframes borderRotate {
             to { transform: rotate(360deg); }
         }
 
-        .about-image-placeholder span {
-            font-size: 3.5rem;
-            font-family: var(--font-secondary);
-            color: var(--accent-blue);
-            z-index: 1; /* Above the pseudo-element */
-            text-shadow: 0 0 10px var(--accent-blue);
+        .about-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
-        /* Projects Page */
+        .about-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--bg-medium), var(--bg-light));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            font-family: var(--font-secondary);
+            color: var(--accent-red);
+            text-shadow: 0 0 20px var(--glow-color);
+        }
+
+        /* Projects */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly larger minmax */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 35px;
         }
+
         .project-card {
-            background-color: var(--bg-light); /* Lighter background for cards */
+            background-color: var(--bg-light);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 5px solid var(--primary-blue);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-red);
             position: relative;
-            overflow: hidden; /* For tilt effect pseudo-element */
         }
+
         .project-card:hover {
-            /* Tilt effect handled by JS, box-shadow can be enhanced here */
-            box-shadow: 0 12px 35px var(--shadow-color), 0 0 15px var(--glow-color);
+            box-shadow: 0 12px 40px var(--shadow-color);
+            transform: translateY(-5px);
         }
+
         .project-card h3 {
             font-size: 1.6rem;
             margin-bottom: 1rem;
         }
-        .project-card .tech-stack {
+
+        .tech-stack {
             font-size: 0.9rem;
             color: var(--text-medium);
             margin-bottom: 1.2rem;
@@ -455,45 +468,43 @@
             flex-wrap: wrap;
             gap: 8px;
         }
-        .project-card .tech-stack span {
-            background-color: rgba(0, 123, 255, 0.2);
-            padding: 4px 10px;
-            border-radius: 5px;
+
+        .tech-stack span {
+            background-color: rgba(230, 57, 70, 0.2);
+            padding: 5px 12px;
+            border-radius: 6px;
             font-weight: 500;
-            color: var(--accent-blue);
+            color: var(--accent-red);
         }
+
         .project-card-links a {
-            color: var(--accent-blue);
+            color: var(--accent-red);
             text-decoration: none;
             font-weight: 600;
             margin-right: 18px;
-            transition: color var(--transition-speed) ease, text-shadow var(--transition-speed) ease;
+            transition: color var(--transition-speed) ease;
         }
+
         .project-card-links a:hover {
             color: var(--text-light);
-            text-shadow: 0 0 5px var(--accent-blue);
             text-decoration: underline;
         }
-        .project-card .btn { /* Button styling within card */
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
 
-
-        /* Contact & Login Page Forms */
-        .form-container { /* Common container for contact and login forms */
-            max-width: 650px;
+        /* Contact Form */
+        .form-container {
+            max-width: 700px;
             margin: 0 auto;
             background-color: var(--bg-light);
-            padding: 35px 40px; /* More padding */
+            padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 10px var(--glow-color) inset;
-            border: 1px solid rgba(0,123,255,0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            border: 1px solid rgba(230, 57, 70, 0.2);
         }
+
         .form-group {
             margin-bottom: 25px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 10px;
@@ -501,142 +512,175 @@
             color: var(--text-medium);
             font-size: 1.05rem;
         }
+
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 14px 18px;
             border-radius: 10px;
-            border: 2px solid transparent; 
+            border: 2px solid transparent;
             background-color: var(--bg-dark);
             color: var(--text-light);
             font-family: var(--font-primary);
             font-size: 1rem;
-            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            transition: all var(--transition-speed) ease;
         }
+
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 4px rgba(0, 198, 255, 0.25), 0 0 10px var(--glow-color) inset;
+            border-color: var(--accent-red);
+            box-shadow: 0 0 0 4px rgba(255, 89, 100, 0.2);
         }
-        #form-submission-message {
-            margin-top: 25px;
-            padding: 18px;
-            border-radius: 10px;
-            text-align: left;
-        }
-        #form-submission-message.success {
-            background-color: rgba(40, 167, 69, 0.15);
-            color: #5cb85c; /* Brighter green */
-            border: 1px solid rgba(40, 167, 69, 0.5);
-        }
-        #form-submission-message.error {
-            background-color: rgba(220, 53, 69, 0.15);
-            color: #d9534f; /* Brighter red */
-            border: 1px solid rgba(220, 53, 69, 0.5);
-        }
-        #form-submission-message pre {
-            white-space: pre-wrap; 
-            word-wrap: break-word;
-            font-size: 0.95rem;
-        }
-        .login-form-specific p {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .login-form-specific p a {
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .login-form-specific p a:hover {
-            text-decoration: underline;
-        }
-
 
         /* Footer */
         footer {
             background-color: var(--bg-medium);
             color: var(--text-medium);
             text-align: center;
-            padding: 35px 20px;
-            border-top: 1px solid rgba(0, 123, 255, 0.1);
-            /* margin-top: auto; Removed to let page-container flex handle it */
+            padding: 40px 30px;
+            border-top: 1px solid rgba(230, 57, 70, 0.2);
+            margin-top: auto;
         }
+
         .social-links {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
+
         .social-links a {
             margin: 0 15px;
             display: inline-block;
-            transition: transform var(--transition-speed) ease, filter var(--transition-speed) ease;
+            transition: all var(--transition-speed) ease;
         }
+
         .social-links a:hover {
-            transform: scale(1.25) translateY(-3px);
-            filter: drop-shadow(0 0 5px var(--accent-blue));
+            transform: scale(1.2) translateY(-3px);
         }
+
         .social-links svg {
-            width: 30px; /* Larger icons */
-            height: 30px;
+            width: 28px;
+            height: 28px;
             fill: var(--text-medium);
             transition: fill var(--transition-speed) ease;
         }
+
         .social-links a:hover svg {
-            fill: var(--accent-blue);
-        }
-        footer p a {
-            color: var(--primary-blue);
-            text-decoration: none;
-        }
-        footer p a:hover {
-            text-decoration: underline;
-            color: var(--accent-blue);
+            fill: var(--accent-red);
         }
 
-        /* Scroll-based Animations (Reveal elements) */
+        footer p a {
+            color: var(--primary-red);
+            text-decoration: none;
+        }
+
+        footer p a:hover {
+            text-decoration: underline;
+        }
+
+        /* Scroll Animations */
         .reveal-on-scroll {
             opacity: 0;
-            transform: translateY(40px) scale(0.95); /* Enhanced effect */
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
         }
+
         .reveal-on-scroll.visible {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) { /* Tablet */
-            .about-grid { grid-template-columns: 1fr; text-align: center; }
-            .about-image-placeholder { margin-bottom: 40px; max-width: 280px; height: 280px;}
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .about-image-container {
+                max-width: 300px;
+                height: 300px;
+                margin: 0 auto;
+            }
         }
 
-        @media (max-width: 768px) { /* Mobile */
+        @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
-                align-items: center;
+                gap: 15px;
             }
-            .logo { margin-bottom: 18px; }
+
             nav ul {
+                flex-wrap: wrap;
                 justify-content: center;
-                padding-left: 0; 
-                flex-wrap: wrap; /* Allow nav items to wrap */
+                gap: 15px;
             }
-            nav ul li { margin: 5px 10px; } /* Adjust spacing for wrapped items */
 
-            h1 { font-size: 2.8rem; }
-            #home-page .hero-name { font-size: 3.2rem; }
-            #home-page .hero-tagline { font-size: 1.3rem; }
-            .code-editor-container { max-width: 90%; padding: 15px; }
-            #animated-code { font-size: 0.85rem; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
 
-            h2 { font-size: 2.2rem; }
-            h3 { font-size: 1.7rem; }
+            #home-page .hero-name {
+                font-size: 3rem;
+            }
 
-            .page-content { padding-top: 180px; /* Increased for taller header on mobile */ }
-            .projects-grid { grid-template-columns: 1fr; } /* Single column for projects */
-            .form-container { padding: 25px 20px; }
+            #home-page .hero-tagline {
+                font-size: 1.2rem;
+            }
+
+            .page-content {
+                padding: 120px 20px 60px;
+            }
+
+            .code-editor-container {
+                max-width: 100%;
+                padding: 15px;
+            }
+
+            #animated-code {
+                font-size: 0.85rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .about-image-container {
+                max-width: 280px;
+                height: 280px;
+            }
         }
 
+        @media (max-width: 480px) {
+            .logo-name {
+                font-size: 1.2rem;
+            }
+
+            .logo-svg-container {
+                width: 35px;
+                height: 35px;
+            }
+
+            #home-page .hero-name {
+                font-size: 2.2rem;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -648,7 +692,7 @@
                 <div class="logo-svg-container">
                     <svg class="logo-svg" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                         <circle class="circle-bg" cx="25" cy="25" r="24"/>
-                        <text class="text-am" x="50%" y="51%">AM</text>
+                        <text class="text-am" x="50%" y="51%">A</text>
                     </svg>
                 </div>
                 <span class="logo-name">
@@ -661,7 +705,6 @@
                     <li><a href="#about" class="nav-link" data-page="about-page">About</a></li>
                     <li><a href="#projects" class="nav-link" data-page="projects-page">Projects</a></li>
                     <li><a href="#contact" class="nav-link" data-page="contact-page">Contact</a></li>
-                    <li><a href="#login" class="nav-link" data-page="login-page">Login</a></li>
                 </ul>
             </nav>
         </div>
@@ -671,7 +714,7 @@
         <section id="home-page" class="page-content active">
             <div class="hero-section">
                 <h1 class="hero-name">Abhiyank Mishra</h1>
-                <p class="hero-tagline">Futuristic Web Architect & Digital Craftsman</p>
+                <p class="hero-tagline">AI Developer & Digital Innovation Architect</p>
                 <div class="code-editor-container">
                     <div class="code-editor-header">
                         <span class="code-editor-dot red"></span>
@@ -680,7 +723,7 @@
                     </div>
                     <div id="animated-code"></div><span class="typing-cursor"></span>
                 </div>
-                <a href="#projects" class="btn nav-link" data-page="projects-page" style="margin-top: 2.5rem;">Explore My Creations</a>
+                <a href="#projects" class="btn nav-link" data-page="projects-page" style="margin-top: 2.5rem;">View My Projects</a>
             </div>
         </section>
 
@@ -690,175 +733,135 @@
             </div>
             <div class="about-grid">
                 <div class="about-text reveal-on-scroll">
-                    <p>Greetings! I'm Abhiyank Mishra, a forward-thinking developer with a fervent passion for crafting cutting-edge digital solutions. My expertise lies in architecting and building highly interactive, responsive, and aesthetically pleasing web applications that push the boundaries of user experience.</p>
-                    <p>My journey in the realm of technology is fueled by an insatiable curiosity to unravel complex challenges and a profound love for designing elegant, intuitive interfaces. I am adept with JavaScript, HTML5, CSS3, and a spectrum of modern frameworks and libraries, constantly seeking to integrate the latest advancements into my work.</p>
-                    <p>Beyond the screen, I immerse myself in exploring emergent technologies, contributing to innovative open-source initiatives, and relentlessly refining my skill set to engineer software that not only functions flawlessly but also inspires. Let's collaborate to manifest your next visionary project!</p>
+                    <p>Hi! I'm <strong>Abhiyank Mishra</strong> – a passionate developer who loves creating modern, intelligent AI assistants and web applications. I enjoy transforming ideas into real digital experiences that people genuinely love using.</p>
+                    <p>I work with <strong>HTML, CSS, JavaScript</strong>, <strong>Python</strong>, and modern frameworks like <strong>Django</strong>, <strong>React</strong>, and <strong>N8n</strong> to build fast and responsive projects. I'm constantly learning new tools and technologies to enhance my work.</p>
+                    <p>When I'm not coding, I explore emerging tech trends, contribute to open-source projects, and refine my skills daily. I believe in building software that not only functions flawlessly but also inspires others. Let's create something extraordinary together!</p>
                 </div>
-                <div class="about-image-placeholder reveal-on-scroll" style="transition-delay: 0.2s;">
-                    <span>AM</span>
+
+                <div class="about-image-container reveal-on-scroll" style="transition-delay: 0.2s;">
+                    <!-- Replace src with your actual image URL -->
+                    <img src="https://via.placeholder.com/350x350/1a1a1a/e63946?text=Your+Photo" alt="Abhiyank Mishra" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="about-image-placeholder" style="display: none;">A</div>
                 </div>
             </div>
-            </section>
+        </section>
 
         <section id="projects-page" class="page-content">
             <div class="section-title">
-                <h2>My Innovations</h2>
+                <h2>My Projects</h2>
             </div>
             <div class="projects-grid">
                 <div class="project-card reveal-on-scroll">
                     <h3>SGIC Project</h3>
-                    <p class="tech-stack"><span>Python</span><span>Django</span><span>HTML</span><span>Bootstrap </span><span>Javascript </span></p>
-                    <p>A Fully working School Management system with dynamic dashboard for teacher, students, Principal(Admin) </p>
+                    <p class="tech-stack">
+                        <span>Python</span>
+                        <span>Django</span>
+                        <span>HTML</span>
+                        <span>Bootstrap</span>
+                        <span>JavaScript</span>
+                    </p>
+                    <p>A fully functional School Management System with dynamic dashboards for teachers, students, and administrators.</p>
                     <div class="project-card-links">
-                        <a href="https://sgic.up.railway.app/" target="_blank">Live Preview</a>
-                        <a href="https://github.com/abhiyank-mishra" target="_blank">GitHub Repo (Private)</a>
+                        <a href="https://sgic.abhiyank.in/" target="_blank">Live Demo →</a>
                     </div>
                 </div>
+                
                 <div class="project-card reveal-on-scroll" style="transition-delay: 0.15s;">
-                    <h3>Pizza Wale Bhaiya Django</h3>
-                    <p class="tech-stack"><span>Python</span><span>Django</span><span>HTML</span><span>Bootstrap </span><span>Javascript </span></p>
-                    <p>A fully working e-commerce website for Pizza Wale Bhaiya in Django </p>
-                     <div class="project-card-links">
-                        <a href="https://pizzawalebhaiya.up.railway.app/" target="_blank">Live Preview </a>
-                        <a href="https://github.com/abhiyank-mishra" target="_blank">GitHub Repo (Private)</a>
+                    <h3>Jessica AI Chatbot</h3>
+                    <p class="tech-stack">
+                        <span>Python</span>
+                        <span>Django</span>
+                        <span>AI/ML</span>
+                        <span>Bootstrap</span>
+                        <span>JavaScript</span>
+                    </p>
+                    <p>An emotionally intelligent AI chatbot capable of understanding and responding to user emotions naturally.</p>
+                    <div class="project-card-links">
+                        <a href="https://ai.abhiyank.in/" target="_blank">Live Demo →</a>
                     </div>
                 </div>
-                 <div class="project-card reveal-on-scroll" style="transition-delay: 0.3s;">
-                    <h3>Pizza Wale Bhaiya React</h3>
-                    <p class="tech-stack"><span>React</span><span>Next.Js</span><span>HTML</span><span>Bootstrap </span><span>Javascript </span></p>
-                    <p>A working e-commerce website for Pizza Wale Bhaiya in React</p>
-                     <div class="project-card-links">
-                        <a href="https://pizza-wale-bhaiya.vercel.app/" target="_blank">Live Preview </a>
-                        <a href="https://github.com/abhiyank-mishra" target="_blank">GitHub Repo (Private)</a>
+                
+                <div class="project-card reveal-on-scroll" style="transition-delay: 0.3s;">
+                    <h3>Pizza Wale Bhaiya</h3>
+                    <p class="tech-stack">
+                        <span>React</span>
+                        <span>Next.js</span>
+                        <span>JavaScript</span>
+                        <span>Bootstrap</span>
+                    </p>
+                    <p>A fully functional e-commerce platform for Pizza Wale Bhaiya built with modern React and Next.js.</p>
+                    <div class="project-card-links">
+                        <a href="https://pizza-wale-bhaiya.vercel.app/" target="_blank">Live Demo →</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="contact-page" class="page-content">
-  <div class="section-title">
-    <h2>Connect With Me</h2>
-  </div>
-  <form
-    id="contact-form"
-    class="form-container reveal-on-scroll"
-    action="https://formsubmit.co/mishraabhiyank0@gmail.com"
-    method="POST"
-  >
-    <!-- Clean and nice formatting in email -->
-    <input type="hidden" name="_template" value="table" />
-
-    <!-- Subject line in email -->
-    <input type="hidden" name="_subject" value="🌟 New Contact from Portfolio - Abhiyank" />
-
-    <!-- Redirect back to homepage -->
-    <input type="hidden" name="_next" value="https://abhiyank-mishra.github.io/" />
-
-    <!-- No Captcha -->
-    <input type="hidden" name="_captcha" value="false" />
-
-    <!-- Actual form fields -->
-    <div class="form-group">
-      <label for="name">Your Name:</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        placeholder="e.g., Ravi Teja"
-        required
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="email">Your Email:</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="e.g., raviteja@email.com"
-        required
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="message">Your Message:</label>
-      <textarea
-        id="message"
-        name="message"
-        rows="6"
-        placeholder="Let's build something amazing..."
-        required
-      ></textarea>
-    </div>
-
-    <button type="submit" class="btn">Submit to Abhiyank</button>
-  </form>
-
-  <div
-    id="form-submission-message"
-    class="reveal-on-scroll"
-    style="transition-delay: 0.2s;"
-  ></div>
-</section>
-
-        <section id="login-page" class="page-content">
             <div class="section-title">
-                <h2>Access Portal</h2>
+                <h2>Get In Touch</h2>
             </div>
-            <form id="login-form" class="form-container login-form-specific reveal-on-scroll">
+            <form id="contact-form" class="form-container reveal-on-scroll" action="https://formsubmit.co/mishraabhiyank0@gmail.com" method="POST">
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_subject" value="🌟 New Contact from Portfolio - Abhiyank" />
+                <input type="hidden" name="_next" value="https://abhiyank-mishra.github.io/#contact" />
+                <input type="hidden" name="_captcha" value="false" />
+
                 <div class="form-group">
-                    <label for="username">Username / ID:</label>
-                    <input type="text" id="username" name="username" placeholder="Enter your identifier" required>
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
                 </div>
+
                 <div class="form-group">
-                    <label for="password">Password / Key:</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your access key" required>
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
                 </div>
-                <button type="submit" class="btn">Authenticate</button>
-                <p>This is a conceptual login. No actual authentication is performed.</p>
-                <p><a href="#home" class="nav-link" data-page="home-page">Return to Home</a></p>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Tell me about your project or idea..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn">Send Message</button>
             </form>
         </section>
+    </div>
 
-    </div> <footer>
+    <footer>
         <div class="social-links">
-            <a href="https://www.instagram.com/abhiyank_mishra/" target="_blank" title="Instagram">
+                            <a href="https://www.instagram.com/abhiyank_mishra/" target="_blank" title="Instagram">
                 <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.668.072 4.948c.2 4.359 2.618 6.78 6.98 6.98 1.28.058 1.688.072 4.948.072s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
             <a href="https://github.com/abhiyank-mishra" target="_blank" title="GitHub">
                 <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
             </a>
             <a href="https://www.linkedin.com/in/abhiyank-mishra-8bb310305/" target="_blank" title="LinkedIn">
-                 <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
             </a>
         </div>
-        <p>Initiate Contact: <a href="https://abhiyank-mishra.github.io/#contact">Contact me</a></p>
-        <p>&copy; <span id="current-year"></span> Abhiyank Mishra. All Systems Operational.</p>
+        <p>Contact: <a href="#contact" class="nav-link" data-page="contact-page">Get in touch</a></p>
+        <p>&copy; <span id="current-year"></span> Abhiyank Mishra. All Rights Reserved.</p>
     </footer>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         const navLinks = document.querySelectorAll('.nav-link');
         const pages = document.querySelectorAll('.page-content');
-        const homeName = document.querySelector('#home-page .hero-name');
-        const homeTagline = document.querySelector('#home-page .hero-tagline');
-        const homeButton = document.querySelector('#home-page .btn');
-        const codeEditor = document.querySelector('#home-page .code-editor-container');
 
         // --- Animated Code Typing Effect ---
         const animatedCodeElement = document.getElementById('animated-code');
         const codeSnippets = [
             {
-                text: `// Initialize futuristic UI...\n<span class="code-keyword">const</span> <span class="code-variable">ui</span> = <span class="code-keyword">new</span> <span class="code-function-name">FuturisticInterface</span>();\n<span class="code-variable">ui</span>.<span class="code-function-name">renderParticles</span>(<span class="code-number">1000</span>);\n<span class="code-variable">ui</span>.<span class="code-function-name">activateNeuralNetwork</span>();`,
-                delay: 100
+                text: `<span class="code-comment">// Initializing AI systems...</span>\n<span class="code-keyword">const</span> <span class="code-variable">ai</span> = <span class="code-keyword">new</span> <span class="code-function-name">AICore</span>();\n<span class="code-variable">ai</span>.<span class="code-function-name">activate</span>();`,
+                delay: 80
             },
             {
-                text: `// Launching quantum encryption...\n<span class="code-keyword">function</span> <span class="code-function-name">secureConnection</span>(<span class="code-variable">data</span>) {\n  <span class="code-keyword">const</span> <span class="code-variable">encrypted</span> = <span class="code-function-name">QuantumEncrypt</span>(<span class="code-variable">data</span>);\n  <span class="code-keyword">return</span> <span class="code-variable">encrypted</span>;\n}`,
-                delay: 90
+                text: `<span class="code-comment">// Building neural network...</span>\n<span class="code-keyword">function</span> <span class="code-function-name">trainModel</span>(<span class="code-variable">data</span>) {\n  <span class="code-keyword">return</span> <span class="code-function-name">neuralNet</span>.<span class="code-function-name">train</span>(<span class="code-variable">data</span>);\n}`,
+                delay: 75
             },
             {
-                text: `// Booting up AI core...\n<span class="code-keyword">async</span> <span class="code-keyword">function</span> <span class="code-function-name">startAICore</span>() {\n  <span class="code-keyword">await</span> <span class="code-variable">loadModels</span>();\n  <span class="code-comment">// AI is now sentient</span>\n  <span class="code-function-name">console</span>.<span class="code-function-name">log</span>(<span class="code-string">"AI Core Online."</span>);\n}`,
-                delay: 95
+                text: `<span class="code-comment">// Launching application...</span>\n<span class="code-keyword">async</span> <span class="code-keyword">function</span> <span class="code-function-name">deploy</span>() {\n  <span class="code-keyword">await</span> <span class="code-function-name">buildApp</span>();\n  <span class="code-function-name">console</span>.<span class="code-function-name">log</span>(<span class="code-string">"App is live!"</span>);\n}`,
+                delay: 85
             }
         ];
         let currentSnippetIndex = 0;
@@ -870,62 +873,49 @@
             const currentSnippet = codeSnippets[currentSnippetIndex];
             
             if (isDeleting) {
-                // Deleting: Remove characters one by one (faster)
-                // For simplicity in this demo, we'll clear and move to next to avoid complex HTML parsing for deletion
-                animatedCodeElement.innerHTML = ''; 
+                animatedCodeElement.innerHTML = '';
                 currentCharIndex = 0;
                 isDeleting = false;
                 currentSnippetIndex = (currentSnippetIndex + 1) % codeSnippets.length;
-                setTimeout(typeCode, 500); // Pause before typing next
+                setTimeout(typeCode, 500);
             } else {
-                // Typing
                 if (currentCharIndex < currentSnippet.text.length) {
-                    // To correctly render HTML tags as part of the string, we need to append carefully
-                    // This simplified version appends the whole snippet up to currentCharIndex
-                    // A more robust solution would parse and append token by token
                     animatedCodeElement.innerHTML = currentSnippet.text.substring(0, currentCharIndex + 1);
                     currentCharIndex++;
-                    setTimeout(typeCode, Math.random() * currentSnippet.delay + 50); // Randomize typing speed slightly
+                    setTimeout(typeCode, Math.random() * currentSnippet.delay + 40);
                 } else {
-                    // Finished typing this snippet
                     isDeleting = true;
-                    setTimeout(typeCode, 3000); // Wait before deleting
+                    setTimeout(typeCode, 3000);
                 }
             }
         }
 
-
-        // --- Interactive Background Canvas (Particles) ---
+        // --- Interactive Background Canvas ---
         const canvas = document.getElementById('interactive-bg');
         const ctx = canvas.getContext('2d');
-        let particlesArray;
+        let particlesArray = [];
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
         class Particle {
-            constructor(x, y, directionX, directionY, size, color, speed) {
+            constructor(x, y, directionX, directionY, size, color) {
                 this.x = x;
                 this.y = y;
-                this.directionX = directionX * speed;
-                this.directionY = directionY * speed;
+                this.directionX = directionX;
+                this.directionY = directionY;
                 this.size = size;
                 this.color = color;
-                this.baseSpeed = speed;
             }
             draw() {
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
                 ctx.fill();
             }
             update() {
-                if (this.x > canvas.width + this.size * 2 || this.x < -this.size * 2) {
-                    this.directionX = -this.directionX;
-                }
-                if (this.y > canvas.height + this.size * 2 || this.y < -this.size * 2) {
-                    this.directionY = -this.directionY;
-                }
+                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
                 this.x += this.directionX;
                 this.y += this.directionY;
                 this.draw();
@@ -934,32 +924,28 @@
 
         function initParticles() {
             particlesArray = [];
-            const numberOfParticles = (canvas.height * canvas.width) / 10000; 
+            const numberOfParticles = (canvas.height * canvas.width) / 12000;
             for (let i = 0; i < numberOfParticles; i++) {
-                const size = Math.random() * 2 + 0.5; 
+                const size = Math.random() * 2 + 0.5;
                 const x = Math.random() * canvas.width;
                 const y = Math.random() * canvas.height;
-                const directionX = (Math.random() * 0.4) - 0.2; 
+                const directionX = (Math.random() * 0.4) - 0.2;
                 const directionY = (Math.random() * 0.4) - 0.2;
-                const speed = Math.random() * 0.5 + 0.2; // Individual speed for particles
-                const color = `rgba(0, 198, 255, ${Math.random() * 0.4 + 0.2})`; 
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, color, speed));
+                const color = `rgba(230, 57, 70, ${Math.random() * 0.3 + 0.2})`;
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
         }
 
         function connectParticles() {
-            let opacityValue = 1;
             for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a + 1; b < particlesArray.length; b++) { // Start b from a + 1
+                for (let b = a + 1; b < particlesArray.length; b++) {
                     const distance = Math.sqrt(
                         Math.pow(particlesArray[a].x - particlesArray[b].x, 2) +
                         Math.pow(particlesArray[a].y - particlesArray[b].y, 2)
                     );
-                    const connectionDistance = Math.min(canvas.width / 8, 120); // Max connection distance
-
-                    if (distance < connectionDistance) { 
-                        opacityValue = 1 - (distance / connectionDistance);
-                        ctx.strokeStyle = `rgba(0, 123, 255, ${opacityValue * 0.5})`; 
+                    if (distance < 100) {
+                        const opacity = 1 - (distance / 100);
+                        ctx.strokeStyle = `rgba(230, 57, 70, ${opacity * 0.3})`;
                         ctx.lineWidth = 0.8;
                         ctx.beginPath();
                         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -973,12 +959,10 @@
         function animateParticles() {
             requestAnimationFrame(animateParticles);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
+            particlesArray.forEach(particle => particle.update());
             connectParticles();
         }
-        
+
         initParticles();
         animateParticles();
 
@@ -988,18 +972,17 @@
             initParticles();
         });
 
-
         // --- Page Navigation ---
         function showPage(pageId, isInitialLoad = false) {
             pages.forEach(page => {
                 if (page.id === pageId) {
                     setTimeout(() => {
                         page.classList.add('active');
-                        handleScrollAnimations(page); // Trigger scroll animations for new page
-                        if (pageId === 'home-page' && isInitialLoad) { // Trigger homepage animations only on initial load of home
-                            triggerHomePageIntroAnimations();
+                        handleScrollAnimations();
+                        if (pageId === 'home-page' && isInitialLoad) {
+                            setTimeout(() => typeCode(), 800);
                         }
-                    }, isInitialLoad ? 50 : (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--transition-speed')) * 1000 * 0.5) ); // Adjust delay
+                    }, isInitialLoad ? 50 : 150);
                 } else {
                     page.classList.remove('active');
                 }
@@ -1008,9 +991,10 @@
             navLinks.forEach(link => {
                 link.classList.toggle('nav-active', link.dataset.page === pageId);
             });
-            
-            if (!isInitialLoad) { // Avoid changing hash if it's the initial load based on hash
-                 window.location.hash = pageId.replace('-page', '');
+
+            if (!isInitialLoad) {
+                window.location.hash = pageId.replace('-page', '');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
 
@@ -1021,51 +1005,15 @@
                 const currentPage = document.querySelector('.page-content.active');
                 
                 if (currentPage && currentPage.id !== pageId) {
-                    currentPage.classList.remove('active'); 
+                    currentPage.classList.remove('active');
                     showPage(pageId);
-                } else if (!currentPage) { 
-                    showPage(pageId);
-                }
-                 // Smooth scroll to top of new page content
-                const targetPageElement = document.getElementById(pageId);
-                if (targetPageElement) {
-                    // Wait for page to become potentially visible before scrolling
-                    setTimeout(() => {
-                        const headerOffset = document.querySelector('header').offsetHeight;
-                        const elementPosition = targetPageElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-                        window.scrollTo({ top: elementPosition, behavior: 'smooth' });
-                    }, parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--transition-speed')) * 1000 * 0.6);
                 }
             });
         });
-        
-        // --- Homepage Intro Animations ---
-        function triggerHomePageIntroAnimations() {
-            if(homeName) {
-                homeName.style.opacity = '0'; // Reset for animation
-                homeName.style.transform = 'translateY(40px)';
-                setTimeout(() => { homeName.style.opacity = '1'; homeName.style.transform = 'translateY(0)'; }, 200);
-            }
-            if(homeTagline) {
-                homeTagline.style.opacity = '0';
-                homeTagline.style.transform = 'translateY(40px)';
-                setTimeout(() => { homeTagline.style.opacity = '1'; homeTagline.style.transform = 'translateY(0)'; }, 500);
-            }
-             if(codeEditor) {
-                codeEditor.style.opacity = '0';
-                codeEditor.style.transform = 'translateY(40px) scale(0.95)';
-                setTimeout(() => { codeEditor.style.opacity = '1'; codeEditor.style.transform = 'translateY(0) scale(1)'; typeCode(); }, 800); // Start typing after editor appears
-            }
-            if(homeButton) {
-                homeButton.style.opacity = '0';
-                homeButton.style.transform = 'translateY(40px)';
-                setTimeout(() => { homeButton.style.opacity = '1'; homeButton.style.transform = 'translateY(0)'; }, 1100);
-            }
-        }
 
-        // --- Initial Page Load from Hash or Default to Home ---
+        // --- Initial Page Load ---
         function loadInitialPage() {
-            const hash = window.location.hash.substring(1); 
+            const hash = window.location.hash.substring(1);
             let initialPageId = 'home-page';
             if (hash) {
                 const potentialPageId = hash + '-page';
@@ -1073,86 +1021,28 @@
                     initialPageId = potentialPageId;
                 }
             }
-            showPage(initialPageId, true); // Pass true for isInitialLoad
+            showPage(initialPageId, true);
         }
-        loadInitialPage(); 
+        loadInitialPage();
 
-        // --- Scroll-based Animations ---
+        // --- Scroll Animations ---
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                } else {
-                    // Optional: To re-animate every time it scrolls out and back in
-                    // entry.target.classList.remove('visible'); 
                 }
             });
-        }, { threshold: 0.1 }); 
+        }, { threshold: 0.1 });
 
-        function handleScrollAnimations(container) {
-            const elementsToObserve = container.querySelectorAll('.reveal-on-scroll');
+        function handleScrollAnimations() {
+            const elementsToObserve = document.querySelectorAll('.reveal-on-scroll');
             elementsToObserve.forEach(el => {
-                el.classList.remove('visible'); // Reset for re-animation if page changes
+                el.classList.remove('visible');
                 revealObserver.observe(el);
             });
         }
-        
-        // --- Project Card Tilt Effect ---
-        const projectCards = document.querySelectorAll('.project-card');
-        projectCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                const rotateX = (y / (rect.height / 2)) * -7; // Max tilt 7 degrees
-                const rotateY = (x / (rect.width / 2)) * 7;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
-            });
-        });
 
-        // --- Contact Form Handling (Now mainly for FormSubmit) ---
-        const contactForm = document.getElementById('contact-form');
-        const formMessageDiv = document.getElementById('form-submission-message');
-
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                // FormSubmit will handle the submission.
-                // You can add client-side validation here if needed before FormSubmit takes over.
-                const name = document.getElementById('name').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const message = document.getElementById('message').value.trim();
-
-                if (!name || !email || !message) {
-                    e.preventDefault(); // Prevent FormSubmit if fields are empty
-                    formMessageDiv.innerHTML = '<p><strong>Error:</strong> Please fill in all fields before transmitting.</p>';
-                    formMessageDiv.className = 'error';
-                    setTimeout(() => { formMessageDiv.innerHTML = ''; formMessageDiv.className = ''; }, 4000);
-                    return;
-                }
-                // If using JS to show a message after FormSubmit (requires redirecting back with params or AJAX)
-                // For now, FormSubmit's default behavior will take over.
-                // You can set a `_next` hidden input to redirect to a custom "thank you" page.
-                console.log("Form submitted to FormSubmit.co");
-                // Optionally, clear form or show a temporary local message
-                // setTimeout(() => { contactForm.reset(); }, 1000); 
-            });
-        }
-        
-        // --- Login Form (Visual Only) ---
-        const loginForm = document.getElementById('login-form');
-        if (loginForm) {
-            loginForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert("Login attempt (visual demo). Username: " + document.getElementById('username').value);
-                loginForm.reset();
-            });
-        }
-
-
-        // --- Dynamic Year in Footer ---
+        // --- Dynamic Year ---
         document.getElementById('current-year').textContent = new Date().getFullYear();
     });
     </script>
