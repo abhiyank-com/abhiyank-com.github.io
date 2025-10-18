@@ -264,92 +264,221 @@
         /* Home Page */
         #home-page .hero-section {
             min-height: calc(100vh - 160px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             align-items: center;
-            text-align: center;
+            padding: 40px 0;
+        }
+
+        .hero-content {
+            text-align: left;
+        }
+
+        #home-page .hero-greeting {
+            font-size: 1.3rem;
+            color: var(--accent-red);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
         }
 
         #home-page .hero-name {
-            font-size: 4.5rem;
+            font-size: 4rem;
             font-weight: 800;
-            background: linear-gradient(90deg, var(--text-light), var(--accent-red), var(--primary-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: textShine 4s linear infinite;
+            color: var(--text-light);
             margin-bottom: 1rem;
+            line-height: 1.1;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
         }
 
-        @keyframes textShine {
-            to { background-position: 200% center; }
+        #home-page .hero-name .highlight {
+            background: linear-gradient(135deg, var(--primary-red), var(--accent-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         #home-page .hero-tagline {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--text-medium);
-            margin-bottom: 2.5rem;
-        }
-        
-        /* Code Editor */
-        .code-editor-container {
-            width: 100%;
-            max-width: 700px;
-            margin-top: 2rem;
-            background-color: var(--code-editor-bg);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
-            border: 1px solid rgba(230, 57, 70, 0.3);
-        }
-
-        .code-editor-header {
-            display: flex;
-            align-items: center;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .code-editor-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-
-        .code-editor-dot.red { background-color: #FF5F57; }
-        .code-editor-dot.yellow { background-color: #FEBC2E; }
-        .code-editor-dot.green { background-color: #28C840; }
-
-        #animated-code {
-            font-family: 'Courier New', monospace;
-            font-size: 0.95rem;
-            color: #C9D1D9;
+            margin-bottom: 2rem;
             line-height: 1.6;
-            min-height: 120px;
-            white-space: pre-wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
         }
 
-        .code-keyword { color: #FF7B72; }
-        .code-variable { color: #FFA657; }
-        .code-string { color: #A5D6FF; }
-        .code-comment { color: #8B949E; font-style: italic; }
-        .code-function-name { color: #D2A8FF; }
-        .code-number { color: #79C0FF; }
-
-        .typing-cursor {
-            display: inline-block;
-            width: 8px;
-            height: 1.2em;
-            background-color: var(--accent-red);
-            animation: blink 1s steps(1) infinite;
-            margin-left: 2px;
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
         }
 
-        @keyframes blink {
-            50% { opacity: 0; }
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-red);
+            font-family: var(--font-secondary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-red);
+            color: var(--text-light);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .hero-circle {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.1), rgba(255, 89, 100, 0.05));
+            border: 2px solid rgba(230, 57, 70, 0.3);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-circle::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            border: 1px solid rgba(230, 57, 70, 0.1);
+            animation: rotate 10s linear infinite;
+        }
+
+        .hero-circle::after {
+            content: '';
+            position: absolute;
+            inset: -40px;
+            border-radius: 50%;
+            border: 1px solid rgba(230, 57, 70, 0.05);
+            animation: rotate 15s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: var(--bg-light);
+            border: 2px solid var(--primary-red);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 20px rgba(230, 57, 70, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 15%;
+            right: 15%;
+            animation-delay: 0.5s;
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 20%;
+            left: 5%;
+            animation-delay: 1s;
+        }
+
+        .floating-icon:nth-child(4) {
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-circle-content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-circle-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-red);
+        }
+
+        .hero-circle-content p {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            margin: 0;
         }
 
         /* Section Title */
@@ -619,25 +748,55 @@
             h2 { font-size: 2rem; }
             h3 { font-size: 1.5rem; }
 
+            #home-page .hero-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-content {
+                text-align: center;
+                order: 2;
+            }
+
+            .hero-visual {
+                order: 1;
+            }
+
             #home-page .hero-name {
-                font-size: 3rem;
+                font-size: 2.5rem;
+            }
+
+            #home-page .hero-greeting {
+                font-size: 1.1rem;
             }
 
             #home-page .hero-tagline {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hero-circle {
+                width: 300px;
+                height: 300px;
+            }
+
+            .floating-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
             }
 
             .page-content {
                 padding: 120px 20px 60px;
-            }
-
-            .code-editor-container {
-                max-width: 100%;
-                padding: 15px;
-            }
-
-            #animated-code {
-                font-size: 0.85rem;
             }
 
             .projects-grid {
@@ -665,7 +824,7 @@
             }
 
             #home-page .hero-name {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
 
             nav ul {
@@ -679,6 +838,19 @@
             .btn {
                 padding: 12px 24px;
                 font-size: 0.9rem;
+            }
+
+            .hero-circle {
+                width: 250px;
+                height: 250px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -713,17 +885,46 @@
     <div class="page-container">
         <section id="home-page" class="page-content active">
             <div class="hero-section">
-                <h1 class="hero-name">Abhiyank Mishra</h1>
-                <p class="hero-tagline">AI Developer & Digital Innovation Architect</p>
-                <div class="code-editor-container">
-                    <div class="code-editor-header">
-                        <span class="code-editor-dot red"></span>
-                        <span class="code-editor-dot yellow"></span>
-                        <span class="code-editor-dot green"></span>
+                <div class="hero-content">
+                    <p class="hero-greeting">👋 Hello, I'm</p>
+                    <h1 class="hero-name">Abhiyank <span class="highlight">Mishra</span></h1>
+                    <p class="hero-tagline">AI Developer & Full-Stack Engineer crafting intelligent solutions that make a difference.</p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">3+</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2+</div>
+                            <div class="stat-label">Years Exp</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Dedication</div>
+                        </div>
                     </div>
-                    <div id="animated-code"></div><span class="typing-cursor"></span>
+
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn nav-link" data-page="projects-page">View Projects</a>
+                        <a href="#contact" class="btn btn-secondary nav-link" data-page="contact-page">Contact Me</a>
+                    </div>
                 </div>
-                <a href="#projects" class="btn nav-link" data-page="projects-page" style="margin-top: 2.5rem;">View My Projects</a>
+
+                <div class="hero-visual">
+                    <div class="hero-circle">
+                        <div class="floating-elements">
+                            <div class="floating-icon">⚡</div>
+                            <div class="floating-icon">🚀</div>
+                            <div class="floating-icon">💡</div>
+                            <div class="floating-icon">🎯</div>
+                        </div>
+                        <div class="hero-circle-content">
+                            <h3>Innovation</h3>
+                            <p>Building the Future</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -848,48 +1049,6 @@
         const navLinks = document.querySelectorAll('.nav-link');
         const pages = document.querySelectorAll('.page-content');
 
-        // --- Animated Code Typing Effect ---
-        const animatedCodeElement = document.getElementById('animated-code');
-        const codeSnippets = [
-            {
-                text: `<span class="code-comment">// Initializing AI systems...</span>\n<span class="code-keyword">const</span> <span class="code-variable">ai</span> = <span class="code-keyword">new</span> <span class="code-function-name">AICore</span>();\n<span class="code-variable">ai</span>.<span class="code-function-name">activate</span>();`,
-                delay: 80
-            },
-            {
-                text: `<span class="code-comment">// Building neural network...</span>\n<span class="code-keyword">function</span> <span class="code-function-name">trainModel</span>(<span class="code-variable">data</span>) {\n  <span class="code-keyword">return</span> <span class="code-function-name">neuralNet</span>.<span class="code-function-name">train</span>(<span class="code-variable">data</span>);\n}`,
-                delay: 75
-            },
-            {
-                text: `<span class="code-comment">// Launching application...</span>\n<span class="code-keyword">async</span> <span class="code-keyword">function</span> <span class="code-function-name">deploy</span>() {\n  <span class="code-keyword">await</span> <span class="code-function-name">buildApp</span>();\n  <span class="code-function-name">console</span>.<span class="code-function-name">log</span>(<span class="code-string">"App is live!"</span>);\n}`,
-                delay: 85
-            }
-        ];
-        let currentSnippetIndex = 0;
-        let currentCharIndex = 0;
-        let isDeleting = false;
-
-        function typeCode() {
-            if (!animatedCodeElement) return;
-            const currentSnippet = codeSnippets[currentSnippetIndex];
-            
-            if (isDeleting) {
-                animatedCodeElement.innerHTML = '';
-                currentCharIndex = 0;
-                isDeleting = false;
-                currentSnippetIndex = (currentSnippetIndex + 1) % codeSnippets.length;
-                setTimeout(typeCode, 500);
-            } else {
-                if (currentCharIndex < currentSnippet.text.length) {
-                    animatedCodeElement.innerHTML = currentSnippet.text.substring(0, currentCharIndex + 1);
-                    currentCharIndex++;
-                    setTimeout(typeCode, Math.random() * currentSnippet.delay + 40);
-                } else {
-                    isDeleting = true;
-                    setTimeout(typeCode, 3000);
-                }
-            }
-        }
-
         // --- Interactive Background Canvas ---
         const canvas = document.getElementById('interactive-bg');
         const ctx = canvas.getContext('2d');
@@ -979,9 +1138,6 @@
                     setTimeout(() => {
                         page.classList.add('active');
                         handleScrollAnimations();
-                        if (pageId === 'home-page' && isInitialLoad) {
-                            setTimeout(() => typeCode(), 800);
-                        }
                     }, isInitialLoad ? 50 : 150);
                 } else {
                     page.classList.remove('active');
@@ -1042,9 +1198,13 @@
             });
         }
 
+        handleScrollAnimations();
+
         // --- Dynamic Year ---
         document.getElementById('current-year').textContent = new Date().getFullYear();
     });
     </script>
+</body>
+</html>    
 </body>
 </html>
